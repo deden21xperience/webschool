@@ -1,0 +1,33 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+# *.json
+# *.svg
+# .editorconfig
+# .env.example
+# .gitattributes
+# .gitignore
+# .styleci.yml
+# phpunit.xml
+# server.php
+# tests
+# storage
+# artisan
+# composer.lock
+# *.ico
+# public
+# app/Console
+# app/Exceptions
+# bootstrap
+# webpack.mix.json
+# routes/channels.php
+# routes/console.php

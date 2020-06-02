@@ -11,6 +11,7 @@
 |
 */
 
+use App\Post;
 use Illuminate\Support\Facades\Route;
 
 // ==========Start Subdomain==========
@@ -26,7 +27,11 @@ Route::domain('{account}.' . config('app.short_url'))->group(function () {
     });
 });
 // ==========END Subdomain==========
-
+Route::get('/tes', function () {
+    $post = Post::find(1);
+    $image = $post->image;
+    dd($image->url);
+});
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', function () {

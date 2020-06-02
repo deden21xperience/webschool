@@ -53,7 +53,13 @@
             <a href="javascript:void(0);" class=" waves-block waves-light profile-button"
               data-activates="profile-dropdown">
               <span class="avatar-status avatar-online">
-                <img src="{{ asset('images/avatar/avatar-7.png') }}" alt="avatar">
+                @php
+                $post = App\Post::find(1);
+                $image = $post->image;
+                // dd($image->url);
+                @endphp
+                <img src="{{ asset($image->url) }}" alt="avatar">
+                {{-- <img src="{{ asset('images/avatar/avatar-7.png') }}" alt="avatar"> --}}
                 <i></i>
               </span>
             </a>
@@ -200,7 +206,7 @@
           <li class="user-details cyan darken-2">
             <div class="row">
               <div class="col col s4 m4 l4">
-                <img src="{{ asset('images/avatar/avatar-7.png') }}" alt=""
+                <img src="{{ asset($image->url) }}" alt="avatar"
                   class="circle responsive-img valign profile-image cyan">
               </div>
               <div class="col col s8 m8 l8">
@@ -236,7 +242,8 @@
           <li class="no-padding">
             <ul class="collapsible" data-collapsible="accordion">
               <li>
-                <router-link to="/admin/dashboard">
+                <router-link :to="{path:'/admin/dashboard', params: { userId: 123 }}">
+                  {{-- <NavLink :active="isActive" :href="href" @click="navigate">{{ route.fullPath }}</NavLink> --}}
                   <i class="material-icons">pie_chart_outlined</i>
                   <span class="nav-text">Dashboard</span>
                 </router-link>

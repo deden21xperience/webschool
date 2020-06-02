@@ -36,13 +36,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 // import M from "materialize-css";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "dashboard",
   data: function data() {
     return {
-      info: null
+      info: null,
+      cek: [],
+      baseUrl: this.$route.config
     };
   },
   computed: {
@@ -51,24 +60,40 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var tes = localStorage.getItem("tes");
-    tes = JSON.parse(tes); // console.log(tes);
+    var _this = this;
 
-    this.info = tes.data; // console.log(this.info);
-    // if (tes == null) {
-    // axios
-    //   .get("http://dummy.restapiexample.com/api/v1/employees")
-    //   .then(response => {
-    //     // localStorage.setItem("tes", JSON.stringify(response.data));
-    //     this.info = response;
-    //     // console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-    // } else{
-    //   this.info = tes
+    // let tes = localStorage.getItem("key");
+    // const url = "http://dummy.restapiexample.com/api/v1/employees";
+    var url = "http://school.test/api/wargasekolah"; // if (tes == null) {
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+      console.log(response); // this.baseUrl = response.config.url;
+
+      _this.info = response.data; // this.photo = this.info.photo;
+      // var tes1 = this.info;
+      // tes1 = JSON.stringify(this.info);
+      // localStorage.setItem("key", tes1);
+    })["catch"](function (error) {
+      console.log(error);
+    }); // } else {
+    //   this.info = JSON.parse(tes);
+    //   this.cek = this.isiKolom(this.info);
     // }
+  },
+  methods: {
+    isiKolom: function isiKolom(tes) {
+      // tes.forEach(element => {
+      //   console.log(element);
+      // });
+      // console.log(tes[0]);
+      var tes = Object.keys(tes[0]); // console.log(tes);
+
+      var obj = [];
+      tes.forEach(function (element) {
+        obj.push(element); // console.log(element);
+      });
+      return obj;
+    }
   }
 });
 
@@ -629,11 +654,17 @@ var render = function() {
           return _c("tr", { key: dt.id }, [
             _c("td", [_vm._v(_vm._s(dt.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(dt.employee_name))]),
+            _c("td", [_vm._v(_vm._s(dt.nama))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(dt.employee_salary))]),
+            _c("td", [
+              _c("img", {
+                attrs: { src: _vm.baseUrl + "/" + dt.photo, alt: "" }
+              })
+            ]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(dt.employee_age))])
+            _c("td", [_vm._v(_vm._s(dt.tgl_lahir))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(dt.jenis_kel))])
           ])
         }),
         0
@@ -652,9 +683,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Salary")]),
+        _c("th", [_vm._v("Photo")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Age")])
+        _c("th", [_vm._v("Tgl Lahir")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("JK")])
       ])
     ])
   }

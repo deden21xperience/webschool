@@ -20,4 +20,10 @@ class WargaSekolah extends Model
     {
         return $this->belongsTo(\App\Job::class);
     }
+
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

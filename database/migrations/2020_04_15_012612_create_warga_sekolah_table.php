@@ -21,16 +21,16 @@ class CreateWargaSekolahTable extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->enum('jenis_kel', ['L', 'P'])->nullable();
             $table->tinyInteger('agama_id');
-            $table->string('tlp', 25)->nullable();
-            $table->string('hp', 25)->nullable();
+            // $table->string('tlp', 25)->nullable();
+            // $table->string('hp', 25)->nullable();
             $table->tinyInteger('jobs_id');
             $table->tinyInteger('posisi_user_id');
             // $table->boolean('can_login')->default(true);
             $table->boolean('status_warga')->default(true);
             $table->string('photo')->nullable();
-            $table->string('facebook_address')->nullable();
-            $table->string('instagram_address')->nullable();
-            $table->string('email_address')->nullable();
+            // $table->string('facebook_address')->nullable();
+            // $table->string('instagram_address')->nullable();
+            // $table->string('email_address')->nullable();
             $table->timestamps();
         });
     }
